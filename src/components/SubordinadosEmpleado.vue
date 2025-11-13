@@ -31,7 +31,7 @@ export default {
 	},
 	mounted() {
 		let token = localStorage.getItem("token");
-		if (token == null) {
+		if (token.length == 0) {
 			this.$router.push("/login");
 		}
 		service.getSubordinados(token).then(result => {

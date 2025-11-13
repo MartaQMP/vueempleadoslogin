@@ -7,7 +7,8 @@
 			<label class="form-label">Password:</label>
 			<input class="form-control" type="text" v-model="user.password" />
 			<br />
-			<button class="btn btn-warning">Crear</button>
+			<button class="btn btn-secondary" style="margin-right: 5%;">Inicio Sesion</button>
+			<button class="btn btn-secondary">Cerrar Sesion</button>
 		</form>
 	</div>
 </template>

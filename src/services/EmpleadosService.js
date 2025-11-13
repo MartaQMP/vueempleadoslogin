@@ -12,7 +12,7 @@ export default class EmpleadosService {
 					},
 				})
 				.then(response => {
-					resolve(response);
+					resolve(response.data);
 				});
 		});
 	}
@@ -27,7 +27,7 @@ export default class EmpleadosService {
 					},
 				})
 				.then(response => {
-					resolve(response);
+					resolve(response.data);
 				});
 		});
 	}
@@ -37,7 +37,8 @@ export default class EmpleadosService {
 			let request = "auth/login";
 			axios.post(Global.urlEmpleados + request, login).then(response => {
 				localStorage.clear();
-				localStorage.setItem("token", response.response);
+				console.log(response.data.response)
+				localStorage.setItem("token", response.data.response);
 			});
 		});
 	}

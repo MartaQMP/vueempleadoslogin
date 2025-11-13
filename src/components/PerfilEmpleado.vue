@@ -2,16 +2,16 @@
 	<div id="div1">
 		<h1 id="titulo">Perfil</h1>
         <div class="card" v-if="empleado">
-        <div class="card-header">{{ perfil.apellido }}</div>
+        <div class="card-header">{{ empleado.apellido }}</div>
         <div class="card-body">
             <p class="card-text">
                 Oficio:
-                {{ perfil.oficio }}
+                {{ empleado.oficio }}
             </p><p class="card-text">
                 Director:
-                {{ perfil.director }}
+                {{ empleado.director }}
             </p>
-            <p class="card-text">Salario: {{ perfil.salario }} €</p>
+            <p class="card-text">Salario: {{ empleado.salario }} €</p>
         </div>
     </div>
 	</div>
@@ -30,7 +30,7 @@ export default {
 	},
 	mounted() {
 		let token = localStorage.getItem("token");
-		if (token == null) {
+		if (token.length == 0) {
 			this.$router.push("/login");
 		}
 		service.getPerfil(token).then(result => {
