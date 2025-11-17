@@ -2,11 +2,13 @@
 	<div id="div1">
 		<h1 id="titulo">Subordinados</h1>
 		<table v-if="subordinados" class="table table-striped">
-			<tr>
-				<th>Apellido</th>
-				<th>Oficio</th>
-				<th>Salario</th>
-			</tr>
+			<thead>
+				<tr>
+					<th>Apellido</th>
+					<th>Oficio</th>
+					<th>Salario</th>
+				</tr>
+			</thead>
 			<tbody>
 				<tr v-for="sub in subordinados" :key="sub">
 					<td>{{ sub.apellido }}</td>
@@ -27,16 +29,20 @@ export default {
 	data() {
 		return {
 			subordinados: [],
+			token: "",
 		};
 	},
 	mounted() {
-		let token = localStorage.getItem("token");
-		if (token.length == 0) {
+		this.token = localStorage.getItem("token");
+		if (!this.token) {
 			this.$router.push("/login");
+			console.log("Salir");
+		} else {
+			console.log("Entrar")
+			service.getSubordinados(this.token).then(result => {
+				this.subordinados = result;
+			});
 		}
-		service.getSubordinados(token).then(result => {
-			this.subordinados = result;
-		});
 	},
 };
 </script>

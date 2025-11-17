@@ -8,7 +8,7 @@
 			<input class="form-control" type="text" v-model="user.password" />
 			<br />
 			<button class="btn btn-secondary" style="margin-right: 5%;">Inicio Sesion</button>
-			<button class="btn btn-secondary">Cerrar Sesion</button>
+			<button type="button" class="btn btn-secondary" @click="cerrarSesion()">Cerrar Sesion</button>
 		</form>
 	</div>
 </template>
@@ -30,9 +30,12 @@ export default {
 	methods: {
 		hacerLogin() {
 			service.crearToken(this.user).then(() => {
-				this.$route.push("/");
+				this.$router.push("/");
 			});
 		},
+		cerrarSesion(){
+			localStorage.clear()
+		}
 	},
 };
 </script>

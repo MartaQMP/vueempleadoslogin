@@ -37,7 +37,6 @@ export default class EmpleadosService {
 			let request = "auth/login";
 			axios.post(Global.urlEmpleados + request, login).then(response => {
 				localStorage.clear();
-				console.log(response.data.response)
 				localStorage.setItem("token", response.data.response);
 			});
 		});
